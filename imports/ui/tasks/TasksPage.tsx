@@ -6,6 +6,7 @@ import TaskItems from "./TaskItems";
 import { createTracker } from "../../hooks/createTracker";
 import { createSubscribe } from "../../hooks/createSubscribe";
 import { Box, Flex, hope } from "@hope-ui/solid";
+import Navbar from "../common/Navbar";
 /* eslint-disable import/no-default-export */
 
 const Main = hope((Box), {
@@ -35,7 +36,8 @@ export default function TasksPage() {
 
   return (
     <>
-      <Main as="main" >
+      <Navbar/>
+      <Main as="main">
         <TasksHeader/>
         <TasksForm/>
         <TaskItems tasks={ tasks }

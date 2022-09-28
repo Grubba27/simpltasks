@@ -12,7 +12,7 @@ const TaskItems =
    }) => {
     return (
       <Box
-        mt={ 8 }
+        mt="$8"
         py="$4"
         px="$4"
         pb="$4"
@@ -20,12 +20,12 @@ const TaskItems =
         borderColor="$neutral6"
         borderRadius="$lg"
       >
-        <HStack mt={ 2 }>
+        <HStack mt="$2">
           <Box w="70%">
             <Text
               as="span"
-              color={ useColorModeValue('gray.600', 'gray.400') }
-              fontSize="xs"
+              color="$neutral9"
+              fontSize="$sm"
             >
               You have { tasks().length } { tasks().length === 1 ? 'task ' : 'tasks ' }
               and { pendingCount() || 0 } pending.

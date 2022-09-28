@@ -10,10 +10,16 @@ const GradientText = hope(Text, {
 export default function TasksHeader() {
 
   return (
-    <Stack as={ Box } alignSelf="center" justifyContent="center" letterSpacing="$wide" mt="$16" p={ { base: 10 } }>
+    <Stack
+      as={ Box }
+      alignSelf="center"
+      justifyContent="center"
+      letterSpacing="$wide"
+      mt="$16"
+      p="$1">
       <Heading size="4xl" height={ 100 }>
         <GradientText>
-          Simple Tasks
+          Simpl Tasks
         </GradientText>
       </Heading>
     </Stack>
