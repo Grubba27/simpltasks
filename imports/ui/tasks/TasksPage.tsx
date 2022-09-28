@@ -1,3 +1,4 @@
+
 import { createEffect, createSignal } from "solid-js";
 import { TasksCollection } from "../../../api/tasks/tasks.collection";
 import TasksHeader from "./TasksHeader";
@@ -7,8 +8,9 @@ import { createTracker } from "../../hooks/createTracker";
 import { createSubscribe } from "../../hooks/createSubscribe";
 import { Box, Flex, hope } from "@hope-ui/solid";
 import Navbar from "../common/Navbar";
-/* eslint-disable import/no-default-export */
 
+
+/* eslint-disable import/no-default-export */
 const Main = hope((Box), {
   baseStyle: {
     maxWidth: "$6xl",

@@ -11,7 +11,7 @@ function Application() {
     </Router>
   )
 }
-Meteor.startup(() => {
 
+Meteor.startup(() => {
   render(() => <Application/>, document.getElementById('root'));
 })

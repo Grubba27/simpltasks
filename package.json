@@ -2,8 +2,10 @@
   "name": "simpltasks",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "dev": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
+    "build": "meteor build ../build --directory",
+    "start": "(cd ../build/bundle && (cd programs/server && meteor npm install) && PORT=4040 ROOT_URL=http://localhost:4040 MONGO_URL=mongodb://127.0.0.1:3001/meteor meteor node main.js)",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
@@ -14,7 +16,6 @@
     "@hope-ui/solid": "^0.6.7",
     "@solidjs/router": "^0.4.3",
     "@stitches/core": "^1.2.8",
-    "@types/meteor": "^2.7.1",
     "meteor-node-stubs": "^1.2.1",
     "simpl-schema": "^3.0.1",
     "solid-js": "^1.5.4",

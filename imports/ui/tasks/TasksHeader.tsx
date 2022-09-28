@@ -1,4 +1,5 @@
 import { Box, Heading, hope, Stack, Text } from "@hope-ui/solid";
+import { JSX, JSXElement } from "solid-js";
 
 const GradientText = hope(Text, {
   baseStyle: {

@@ -3,7 +3,8 @@ import { Tracker } from "meteor/tracker";
 
 export const createTracker =
   <T>(reactiveFn: () => T) => {
-    const [signal, setSignal] = createSignal<T>(undefined);
+    const [signal, setSignal] =
+      createSignal<T>(reactiveFn());
 
     Tracker.autorun(() => {
       setSignal(reactiveFn);
@@ -12,5 +13,6 @@ export const createTracker =
     createEffect(() => {
       setSignal(reactiveFn);
     })
+
     return signal
   }
