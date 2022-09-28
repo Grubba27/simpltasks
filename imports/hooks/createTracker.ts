@@ -6,11 +6,11 @@ export const createTracker =
     const [signal, setSignal] = createSignal<T>(undefined);
 
     Tracker.autorun(() => {
-      setSignal(reactiveFn());
+      setSignal(reactiveFn);
     })
 
     createEffect(() => {
-      setSignal(reactiveFn());
+      setSignal(reactiveFn);
     })
     return signal
   }
