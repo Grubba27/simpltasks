@@ -10,7 +10,7 @@ import { checkLoggedIn } from '../common/auth';
  */
 const insertTask = ({ description }) => {
   check(description, String);
- // checkLoggedIn();
+  // checkLoggedIn();
   TasksCollection.insert({
     description,
     createdAt: new Date(),
@@ -55,12 +55,47 @@ const toggleTaskDone = ({ taskId }) => {
   const task = TasksCollection.findOne(taskId);
   TasksCollection.update({ _id: taskId }, { $set: { done: !task.done } });
 };
-
+const sleep = (ms) =>
+  new Promise(resolve => setTimeout(resolve, ms));
 /**
  * Register task API methods.
  */
-Meteor.methods({
+Meteor.isServer && Meteor.methods({
   insertTask,
   removeTask,
   toggleTaskDone,
+  simpleComputation: async function (_id) {
+    await sleep(500)
+    await TasksCollection.updateAsync({ _id }, { $set: { done: true } });
+    await sleep(500)
+    await sleep(200)
+    await TasksCollection.removeAsync({ _id });
+    return Math.floor(Math.random() * 100);
+  },
+  shouldWorkComputations: function (_id) {
+    sleep(300).then(() => {
+      TasksCollection.update({ _id }, { $set: { done: true } });
+    })
+    sleep(1000).then(() => {
+      TasksCollection.remove({ _id });
+    })
+  },
+  expensiveComputation: async function (_id) {
+    Meteor.call('updateTask', _id)
+    Meteor.call('removeSlowTask', _id)
+    return Math.floor(Math.random() * 100);
+  },
+  expensiveComputationDoesNotWork: async function (_id) {
+    await Meteor.call('updateTask', _id)
+    await Meteor.call('removeSlowTask', _id)
+    return Math.floor(Math.random() * 100);
+  },
+  removeSlowTask: async function (_id) {
+    await sleep(200)
+    TasksCollection.removeAsync({ _id });
+  },
+  'updateTask': async function (_id) {
+    await sleep(500)
+    TasksCollection.updateAsync({ _id }, { $set: { done: true } });
+  }
 });

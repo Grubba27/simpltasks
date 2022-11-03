@@ -1,4 +1,3 @@
-
 import { createEffect, createSignal } from "solid-js";
 import { TasksCollection } from "../../../api/tasks/tasks.collection";
 import TasksHeader from "./TasksHeader";

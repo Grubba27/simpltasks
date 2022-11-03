@@ -8,5 +8,5 @@ import './tasks/tasks.publications';
  * This is the server-side entry point
  */
 Meteor.startup(() => {
-  Migrations.migrateTo('latest');
+  // Migrations.migrateTo('latest');
 });
